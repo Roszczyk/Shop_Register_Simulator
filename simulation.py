@@ -44,7 +44,8 @@ class Simulation:
                 if check_if_customer_fits_register(customers[i], register):
                     if wait_for_more_exlusive and len(customers[i].available_registers) > 1:
                         for n in range(self.N):
-                            if check_if_customer_fits_register(customers[i+n+1], register) and len(customers[i].available_registers) == 1:
+                            if len(customers) > i+n+1 and check_if_customer_fits_register(customers[i+n+1], register) \
+                                    and len(customers[i].available_registers) == 1:
                                 chosen = customers.pop(i+n+1)
                                 print(n+1)
                                 return chosen, customers, n+1

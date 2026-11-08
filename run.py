@@ -11,9 +11,15 @@ if __name__ == "__main__":
         Register("cashier", "cashier"),
         Register("self-service", "self-service")
     ]
-        
-    sim_0 = Simulation(customers, registers, 0, 1)
 
-    total_time = sim_0.run(1000)
+    simulations = {}
 
-    print(total_time)
+    for N in range(11):
+        simulations[N] = Simulation(customers, registers, N, 1)
+
+    simulation_results = {}
+
+    for N in simulations.keys():
+        simulation_results[N] = simulations[N].run(10000)
+
+    print(simulation_results)
